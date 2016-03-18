@@ -5,6 +5,7 @@ import threading
 import sys
 import time
 import asyncio
+import os
 
 client = discord.Client()
 

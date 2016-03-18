@@ -39,6 +39,7 @@ async def on_ready():
 			if count > 0 and count <= 1000:
 				for i in range(count):
 					await client.send_message(targetUser[0], spamText)
+					await asyncio.sleep(1)
 
 		if command == "exit":
 			print("exiting script")
