@@ -9,6 +9,14 @@ import asyncio
 client = discord.Client()
 
 
+inEmail = input("email: ")
+inPassword = input("password: ")
+if os.name == "nt":
+	os.system("cls")
+elif os.name == "posix":
+	os.system('clear')
+
+
 @client.event
 async def on_ready():
     count = 100
@@ -17,6 +25,6 @@ async def on_ready():
     targetUser = [m for m in client.get_all_members() if m.name == uName]
     for i in range(count):
         await client.send_message(targetUser[0], spamText)
-        time.sleep(1)
+        await asyncio.sleep(1)
 
-client.run("metadatabot@gmail.com", "m3t4b0t")
+client.run(inEmail, inPassword)

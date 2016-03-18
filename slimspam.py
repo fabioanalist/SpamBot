@@ -6,7 +6,13 @@ import sys
 import time
 
 client = discord.Client()
-client.login('metadatabot@gmail.com', 'm3t4b0t')
+inEmail = input("email: ")
+inPassword = input("password: ")
+if os.name == "nt":
+	os.system("cls")
+elif os.name == "posix":
+	os.system('clear')
+client.login(inEmail, inPassword)
 
 @client.event
 def on_ready():

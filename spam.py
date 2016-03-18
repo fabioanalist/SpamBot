@@ -3,9 +3,17 @@ import requests
 import subprocess
 import threading
 import sys
+import os
+import time
 
 client = discord.Client()
-client.login('metadatabot@gmail.com', 'm3t4b0t')
+inEmail = input("email: ")
+inPassword = input("password: ")
+if os.name == "nt":
+	os.system("cls")
+if os.name == "posix":
+	os.system("clear")
+client.login(inEmail, inPassword)
 
 helpMessage = ("+++++++++++++++++++++++++++++++++\n"
 			   "+type 'help' to get help        +\n"
@@ -29,6 +37,7 @@ def on_ready():
 			if count > 0 and count <= 1000:
 				for i in range(count):
 					client.send_message(targetUser[0], spamText)
+					time.sleep(0.7)
 
 		if command == "exit":
 			print("exiting script")

@@ -43,7 +43,6 @@ async def on_ready():
 		if command == "exit":
 			print("exiting script")
 			client.logout()
-			sys.exit(0)
 
 		if command == "help":
 			print(helpMessage)
