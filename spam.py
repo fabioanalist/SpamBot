@@ -1,4 +1,5 @@
 import discord
+import asyncio
 import requests
 import subprocess
 import threading
@@ -13,7 +14,6 @@ if os.name == "nt":
 	os.system("cls")
 if os.name == "posix":
 	os.system("clear")
-client.login(inEmail, inPassword)
 
 helpMessage = ("+++++++++++++++++++++++++++++++++\n"
 			   "+type 'help' to get help        +\n"
@@ -21,13 +21,11 @@ helpMessage = ("+++++++++++++++++++++++++++++++++\n"
 			   "type 'start' to start the attack+\n"
 			   "+++++++++++++++++++++++++++++++++"
 			   )
-
 @client.event
+@asyncio.coroutine			   
 def on_ready():
-
 	while 1:
 		command = input(" # ")
-
 		if command == "start":
 			count = int(input("how many times: "))
 			spamText = input("what do you want to send? ")
@@ -38,17 +36,10 @@ def on_ready():
 				for i in range(count):
 					client.send_message(targetUser[0], spamText)
 					time.sleep(0.7)
-
 		if command == "exit":
 			print("exiting script")
 			sys.exit(1)
-
 		if command == "help":
 			print(helpMessage)
-
 	return;
-
-
-
-
-client.run()
+client.run(inEmail, inPassword)
